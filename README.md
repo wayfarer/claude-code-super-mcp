@@ -26,7 +26,7 @@ as an MCP tool, with verbose schema docs so agents pick the right flags.
 - **Light safety defaults**: 60s timeout and 1MB output cap, both per-call
   overridable.
 - **Deterministic binary resolution**: `CLAUDE_BIN` → known local path →
-  `PATH`. Survives Cursor's PATH-inheritance quirks.
+  `PATH`. Survives host harness PATH-inheritance quirks.
 - **Normalized error reporting**: discrete `errorCode` values for
   `binary_not_found`, `spawn_error`, `timeout`, `non_zero_exit`, and
   `invalid_args`.
@@ -38,7 +38,7 @@ npm install
 npm run build
 ```
 
-Then copy `mcp.example.json` into your Cursor MCP config (for example `.cursor/mcp.json` in this workspace), then customize `CLAUDE_BIN`:
+Then copy `mcp.example.json` into your MCP host/client config location, then customize `CLAUDE_BIN`:
 
 ```json
 {
@@ -54,7 +54,7 @@ Then copy `mcp.example.json` into your Cursor MCP config (for example `.cursor/m
 }
 ```
 
-Restart Cursor. The `run_claude` tool will appear in the MCP tool list.
+Reload or restart your MCP host/client. The `run_claude` tool should appear in the MCP tool list.
 
 ## Tool schema
 
@@ -94,15 +94,5 @@ src/
     argCatalog.ts             Lazy parser for `claude --help` (diagnostics)
 docs/
   claude-tool-reference.md    Agent-facing tool reference
-mcp.example.json              Portable Cursor MCP config example
+mcp.example.json              Portable MCP config example
 ```
-
-## Scope
-
-**v1 targets the locally installed Claude Code version.** Behavior across
-versions is best-effort. Future scope hooks for version-aware capability
-detection, output streaming, and stdin piping are documented in the source.
-
-## License
-
-MIT
