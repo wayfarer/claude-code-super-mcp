@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "claude-code-super": {
+      "command": "node",
+      "args": ["${workspaceFolder}/dist/server.js"],
+      "env": {
+        "CLAUDE_BIN": "/path/to/your/claude"
+      }
+    }
+  }
+}
